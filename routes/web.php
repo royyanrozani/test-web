@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Home;
+use App\Http\Controllers\Logout;
 use Illuminate\Support\Facades\Route;
+use App\http\Controllers\Register;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', [Dashboard::class, 'index']); //halaman
+Route::post('/', [Dashboard::class, 'store']); //daftar
+Route::post('/login', [Dashboard::class, 'authenticate']); //login
+Route::post('/logout', [Dashboard::class, 'logout']); //logout
+Route::get('/home', [Home::class, 'index']); //halaman home
